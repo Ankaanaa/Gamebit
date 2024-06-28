@@ -1,14 +1,22 @@
 .section {
-    display: inline-block;
-    max-width: 1100px;
+    // display: inline-block;
+    max-width: 1200px;
     width: 100%;
     background-color: transparent;
+    display: flex;
+    // overflow: hidden;
+    justify-content: space-between;
+  
 
-    .section__wrap {
-        max-width: 1100px;
-        margin-top: 100px;
+    .section__column {
+        flex-basis: 32%;
+        // margin-top: 100px;
         background-color: transparent;
-        margin: 0 auto;
+        // margin: 0 auto;
+    }
+    .section__column-2 {
+        flex-basis: 30%;
+
     }
 
     .section__post {
