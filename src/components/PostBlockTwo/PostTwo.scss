@@ -1,0 +1,12 @@
+.blog__body {
+    display: flex;
+    flex-direction: column;
+    // border: 5px solid green;
+    max-width: 450px;
+    background-color: transparent;
+    overflow: hidden;
+  }
+  
+  .blog__column {
+    background-color: transparent;
+  }

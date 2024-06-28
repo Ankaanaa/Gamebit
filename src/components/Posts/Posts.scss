@@ -1,0 +1,24 @@
+.section {
+    display: inline-block;
+    max-width: 1100px;
+    width: 100%;
+    background-color: transparent;
+
+    .section__wrap {
+        max-width: 1100px;
+        margin-top: 100px;
+        background-color: transparent;
+        margin: 0 auto;
+    }
+
+    .section__post {
+        max-width: 1100px;
+        background-color: transparent;
+    }
+    .section__text {
+        background-color: transparent;
+    }
+    .section__a {
+        background-color: transparent;
+    }
+}

@@ -1,0 +1,60 @@
+
+
+.link {
+    background-color: transparent;
+    .link__li {
+        transition: all 400ms ease;
+        margin-top: 25px;
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        background-color: transparent;
+
+        &:hover {
+            cursor: pointer;
+            .link__span {
+                color: #ce9c6b;
+            }
+            .links__svg {
+                color: #ce9c6b;
+                transform: scale(1.2);
+                transform: translateX(110px);
+            }
+            .links__svg-4 {
+                transform: translateX(220px);
+            }
+            .links__svg-5 {
+                transform: translateX(180px);
+            }
+
+            .links__svg-s {
+                color: #ce9c6b;
+                transform: scale(1.2); 
+            }
+        }
+    }
+    .links__svg,.links__svg-4,.links__svg-5 {
+        background-color: transparent;
+    }
+
+    .link__span {
+        background-color: transparent;
+        margin-left: 5px;
+        color: #3F292B;
+        transition: all 0.4s ease;
+
+    }
+}
+
+.links__svg__small {
+    transition: all 400ms ease;
+    margin: 0 auto;
+}
+
+.links__svg-s {
+    background-color: transparent;
+    height: 30px;
+    width: 30px;
+    color: #3F292B;
+    transition: all 1s ease;
+}
