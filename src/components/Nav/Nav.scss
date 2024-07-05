@@ -9,13 +9,13 @@
 }
 .sidebar {
     position: fixed;
-    width: 400px;
+    width: 300px;
     transition: all 400ms ease;
     height: 100%;
-    border: 0.5px solid #8c8a8a;
+    border: 0.5px solid #a1a1a1;
     border-radius: 10px;
-    background-color: #f1efef;
-    z-index: 20;
+    background-color: #e6e6e6;
+    z-index: 100;
     padding-bottom: 50px;
     /* Цвет и ширина обводки */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -124,6 +124,22 @@
         &:hover {
             color: #ce9c6b;
         }
+    }
+    .sidebar__svg-text {
+        position: absolute;
+        left: -10px;
+        bottom: 35px;
+        color: #ce9c6b;
+        font-family: "Permanent Marker", cursive;
+        font-weight: 400;
+    }
+    .sidebar__svg-text-2 {
+        position: absolute;
+        color: #ce9c6b;
+        font-family: "Permanent Marker", cursive;
+        font-weight: 400;
+        left: 15px;
+        bottom: -20px;
     }
 
 }

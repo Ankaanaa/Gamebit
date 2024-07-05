@@ -44,6 +44,23 @@
         transition: all 0.4s ease;
 
     }
+
+    .link__search {
+
+        margin-top: 250px;
+        margin-left: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        width: 200px;
+    }
+    .NavLink__link {
+        color: #3F292B;
+        transition: all 400ms ease;
+
+        &:hover {
+            color: #ce9c6b;
+        }
+    }
 }
 
 .links__svg__small {
@@ -51,10 +68,3 @@
     margin: 0 auto;
 }
 
-.links__svg-s {
-    background-color: transparent;
-    height: 30px;
-    width: 30px;
-    color: #3F292B;
-    transition: all 1s ease;
-}
