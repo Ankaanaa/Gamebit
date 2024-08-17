@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { PostAndNewsBlockType } from '../../BLL/store'
 import "./News.scss"
 import Novelty from "./Novelty/Novelty"
@@ -6,7 +7,7 @@ interface props {
     News: PostAndNewsBlockType[],
 }
 
-const News = (props:props) => {
+const NewsK = (props:props) => {
     const FirstNews = props.News.filter((el, index:number) => index === 0)
         .map((el:PostAndNewsBlockType) => <Novelty text={el.text} img={el.img} key={el.id} />)
     const TwoNews = props.News.filter((el, index:number) => index === 1)
@@ -33,5 +34,5 @@ const News = (props:props) => {
     )
 }
 
-
+const News = memo(NewsK)
 export default News;

@@ -1,4 +1,5 @@
 
+import { memo } from 'react'
 import { PostAndNewsBlockType } from '../../BLL/store'
 import Homepost from "./Homepost/Homepost"
 import Post from "./Post/Post"
@@ -7,7 +8,7 @@ interface props {
     Post:PostAndNewsBlockType[]
 }
 
-const Posts = (props:props) => {
+const PostsM = (props:props) => {
     const PostBlockFirstTwo = props.Post.filter((el, index:number) => index === 0 || index === 1)
     .map((el:PostAndNewsBlockType) => <Post text={el.text} key={el.id} img={el.img} lastBlockClass={el.class} />);
     const PostBlockLastTwo = props.Post.filter((el, index:number) => index === 2 || index === 3)
@@ -29,6 +30,6 @@ const Posts = (props:props) => {
     )
 }
 
-
+const Posts = memo(PostsM)
 
 export default Posts;

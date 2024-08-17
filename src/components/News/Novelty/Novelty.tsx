@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import "./Novelty.scss"
 
 interface props {
@@ -5,7 +6,7 @@ interface props {
     img: string ,
     key: number,
 }
-const Novelty = (props:props) => {
+const NoveltyK = (props:props) => {
     return (
         <article className="novelty">
             <a href="#">
@@ -15,5 +16,7 @@ const Novelty = (props:props) => {
         </article>
     )
 }
+
+const Novelty = memo(NoveltyK)
 
 export default Novelty;

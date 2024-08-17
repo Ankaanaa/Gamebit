@@ -1,15 +1,23 @@
-
 import { faCalendarDay, faComment, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { memo } from 'react'
 import "./NewsBlock.scss"
-interface props {
+// interface props {
+//     text: string,
+//     img: string,
+//     description: string,
+//     // id?: number,
+//     key: number,
+// }
+interface NewsBlockProps {
     text: string,
-    img: string,
     description: string,
-    // id?: number,
-    key: number,
-}
-const NewsBlock = (props:props) => {
+    img: string,
+    author: string,
+    key: string,
+    pusblisdate: string
+  }
+const NewsBlockNoMemo = (props:NewsBlockProps) => {
     return (
         <article className="NewsBlock">
             <a href="#">
@@ -19,7 +27,7 @@ const NewsBlock = (props:props) => {
                         <h4 className="NewsBlock__text">{props.text}</h4>
                         <h5 className="NewsBlock__description">{props.description}</h5>
                         <div className="NewsBlock__user">
-                            <div className=""><FontAwesomeIcon className="svg-icon" icon={faUser} /> by <span className="autor-name">Andrey Xyu</span> |</div>
+                            <div className=""><FontAwesomeIcon className="svg-icon" icon={faUser} /> by <span className="autor-name">{props.author}</span> |</div>
                             <div className="NewsBlock__margin"><FontAwesomeIcon className="svg-icon" icon={faCalendarDay} /> 30 Jule |</div>
                             <div className="NewsBlock__margin"><FontAwesomeIcon className="svg-icon" icon={faComment} /> 0 Comments</div>
                         </div>
@@ -30,5 +38,6 @@ const NewsBlock = (props:props) => {
     )
 }
 
+const NewsBlock = memo(NewsBlockNoMemo)
 
 export default NewsBlock

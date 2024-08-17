@@ -68,3 +68,20 @@
     margin: 0 auto;
 }
 
+.link__input {
+    width: 50px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-left: 25px;
+    margin-top: 100px;
+}
+
+.input_search {
+    position: relative;
+}
+.input__magnetic__glass {
+    position: absolute;
+    bottom: 8px;
+    left: 30px;
+}
