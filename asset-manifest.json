@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Ankaanaa/gamebit.git/static/css/main.dc4ecd12.css",
+    "main.js": "/Ankaanaa/gamebit.git/static/js/main.5eb405b8.js",
+    "static/js/453.6e250c05.chunk.js": "/Ankaanaa/gamebit.git/static/js/453.6e250c05.chunk.js",
+    "index.html": "/Ankaanaa/gamebit.git/index.html",
+    "main.dc4ecd12.css.map": "/Ankaanaa/gamebit.git/static/css/main.dc4ecd12.css.map",
+    "main.5eb405b8.js.map": "/Ankaanaa/gamebit.git/static/js/main.5eb405b8.js.map",
+    "453.6e250c05.chunk.js.map": "/Ankaanaa/gamebit.git/static/js/453.6e250c05.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dc4ecd12.css",
+    "static/js/main.5eb405b8.js"
+  ]
+}
