@@ -1,4 +1,5 @@
 import { NewsColumnType, PostAndNewsBlockType } from '../../BLL/store'
+import { withBlogMap } from '../../hoc/WithBlogMap'
 import News from '../News/News'
 import Posts from '../Posts/Posts'
 import Headline from './Headline/Headline'
@@ -27,16 +28,17 @@ interface BlogContent {
 		url: string
 	}[]
 }
-
 const PosttwoK = (props: props) => {
+	const WithBlogNewsColumn: any = withBlogMap(NewsColumn)
+	const WithBlogScrollBlog = withBlogMap(ScrollBlog)
 	return (
 		<div>
 			<Posts Post={props.Post.Post} />
 			<Headline Notes={props.Post.Notes} />
 			<News News={props.Post.News} />
 			<Headline NotesNews={props.Post.NotesNews} />
-			<NewsColumn Content={props.BlogContent} />
-			<ScrollBlog Content={props.BlogContent} />
+			<WithBlogNewsColumn Content={props.BlogContent} />
+			<WithBlogScrollBlog Content={props.BlogContent} />
 		</div>
 	)
 }

@@ -27,16 +27,17 @@ const Search = (props: props) => {
 	const addRequestData = (value: string) => {
 		if (consumerValue.length > 0) {
 			setRequestData(prevData => {
-				const newData = [value, ...prevData]
-				if (newData.length > 4) {
-					newData.pop()
-				}
+				const newData = [value, ...prevData].slice(0, 5)
+				localStorage.setItem('requestName', JSON.stringify(newData))
+				// if (newData.length > 4) {
+				// 	newData.pop()
+				// }
 				return newData
 			})
 		}
 	}
 
-	const ClearActiveBtnAndRequestBtnAndSearchResult = () => {
+	const ClearActiveBtnAndDispatch = () => {
 		if (isSearchResult) {
 			setIsSearchResult(false)
 		}
@@ -46,21 +47,15 @@ const Search = (props: props) => {
 		if (props.activeBtn) {
 			props.setActiveBtn(null)
 		}
-	}
-
-	const SearchHandleEnter = (event: any) => {
-		if (event.key === 'Enter') {
-			ClearActiveBtnAndRequestBtnAndSearchResult()
-			props.dispatch(consumerValue)
-			addRequestData(consumerValue)
-		}
-	}
-	const SearchHandleClick = () => {
-		ClearActiveBtnAndRequestBtnAndSearchResult()
 		props.dispatch(consumerValue)
 		addRequestData(consumerValue)
 	}
 
+	const SearchHandleEnter = (event: any) => {
+		if (event.key === 'Enter') {
+			ClearActiveBtnAndDispatch()
+		}
+	}
 	return (
 		<div className='search'>
 			<div className='search__body'>
@@ -72,7 +67,7 @@ const Search = (props: props) => {
 					className='search__input'
 					type='text'
 				/>
-				<button className='search__btn' onClick={SearchHandleClick}>
+				<button className='search__btn' onClick={ClearActiveBtnAndDispatch}>
 					Search
 				</button>
 			</div>
@@ -86,23 +81,28 @@ const Search = (props: props) => {
 			<Request
 				isSearchResult={isSearchResult}
 				setIsSearchResult={setIsSearchResult}
-				dispatch={props.dispatch}
 				RequestData={RequestData}
 				setRequestData={setRequestData}
-				setActiveRequestBtn={props.setActiveRequestBtn}
-				activeRequestBtn={props.activeRequestBtn}
-				activeBtn={props.activeBtn}
-				setActiveBtn={props.setActiveBtn}
+				{...props}
 			/>
 		</div>
 	)
 }
 
 const Request = (props: any) => {
+	let RequestSearchName = localStorage.getItem('requestName')
+	const RequestSearchNameArray = RequestSearchName
+		? JSON.parse(RequestSearchName)
+		: []
 	const { setConsumerValue } = useData()
-	const [requestData, setRequestData] = useState(props.RequestData)
+	const [requestData, setRequestData] = useState(RequestSearchNameArray)
+	// let RequestSearchName = localStorage.getItem('requestName')
+	// const RequestSearchNameArray = RequestSearchName
+	// 	? JSON.parse(RequestSearchName)
+	// 	: []
+
 	useEffect(() => {
-		setRequestData(props.RequestData)
+		setRequestData(RequestSearchNameArray)
 	}, [props.RequestData])
 
 	const RequestClick = (el: any) => {
@@ -130,7 +130,7 @@ const Request = (props: any) => {
 		</div>
 	))
 	const DeleteRequest = () => {
-		setRequestData([])
+		localStorage.removeItem('requestName')
 		props.setRequestData([])
 	}
 	return (

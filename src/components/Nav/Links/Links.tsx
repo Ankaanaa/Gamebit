@@ -5,7 +5,7 @@ const Links = (props: any) => {
 	return (
 		<div className='links'>
 			<div className='links__body'>
-				<Link dispatch={props.dispatch} />
+				<Link setIsOpenModal={props.setIsOpenModal} dispatch={props.dispatch} />
 			</div>
 		</div>
 	)

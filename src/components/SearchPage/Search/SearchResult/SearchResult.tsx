@@ -48,12 +48,13 @@ export const SearchResult = (props: any) => {
 		.filter((name: any) => {
 			return name.Result.length > 0
 		})
+		.slice(0, 8)
 		.map((el: any) => {
 			return (
 				<li
 					key={el.id}
 					className='SearchResult__li'
-					onClick={() => ResultClick(el.Result)}
+					onClick={() => ResultClick(el.Result.toString())}
 				>
 					{el.Result}
 				</li>
@@ -67,16 +68,7 @@ export const SearchResult = (props: any) => {
 
 	return (
 		<div className='SearchResult'>
-			<ul>
-				{SearchNameBlog[0]}
-				{SearchNameBlog[1]}
-				{SearchNameBlog[2]}
-				{SearchNameBlog[3]}
-				{SearchNameBlog[4]}
-				{SearchNameBlog[5]}
-				{SearchNameBlog[6]}
-				{SearchNameBlog[7]}
-			</ul>
+			<ul>{SearchNameBlog}</ul>
 		</div>
 	)
 }

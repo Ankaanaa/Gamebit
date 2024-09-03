@@ -13,6 +13,8 @@ interface DataContextType {
 	inputValue: string
 	setInputValue: React.Dispatch<React.SetStateAction<string>>
 	TextAtlSearch: React.MutableRefObject<HTMLInputElement | null>
+	contentBlog: any
+	setContentBlog: React.Dispatch<any>
 }
 
 interface initialStateType {
@@ -23,11 +25,14 @@ let initialState = {}
 export const DataProvider: React.FC<ComponentType> = ({ children }) => {
 	// Состояния
 	const TextAtlSearch = useRef(null)
+	const [contentBlog, setContentBlog] = useState<any>()
 	const [consumerValue, setConsumerValue] = useState('')
 	const [inputValue, setInputValue] = useState('')
 
 	// Объект с данными и состояниями
 	const contextValue: DataContextType = {
+		contentBlog,
+		setContentBlog,
 		data,
 		consumerValue,
 		setConsumerValue,

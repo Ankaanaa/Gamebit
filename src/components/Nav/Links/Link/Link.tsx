@@ -46,7 +46,16 @@ const Link = (props: any) => {
 			</div>
 			<div className='link__li'>
 				<FontAwesomeIcon icon={faDragon} className='links__svg' />{' '}
-				<span className='link__span'>Обзоры</span>
+				<span className='link__span'>
+					{' '}
+					<NavLink
+						onClick={ScrollUp}
+						className='NavLink__link'
+						to='/create-post'
+					>
+						Обзоры
+					</NavLink>
+				</span>
 			</div>
 			<div className='link__li'>
 				<FontAwesomeIcon icon={faScroll} className='links__svg links__svg-4' />{' '}
@@ -65,6 +74,14 @@ const Link = (props: any) => {
 				name=''
 				id=''
 			/>
+			<div
+				className='link__modal-btn'
+				onClick={() => {
+					props.setIsOpenModal(true)
+				}}
+			>
+				Login
+			</div>
 		</div>
 	)
 }

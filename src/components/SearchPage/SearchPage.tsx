@@ -31,9 +31,10 @@ const SearchPage = (props: any) => {
 					setActiveRequestBtn={setActiveRequestBtn}
 					setActiveBtn={setActiveBtn}
 					activeRequestBtn={activeRequestBtn}
-					dispatch={props.dispatch}
-					SearchState={props.SearchState}
-					CheachSearchList={props.CheachSearchList}
+					// dispatch={props.dispatch}
+					// SearchState={props.SearchState}
+					// CheachSearchList={props.CheachSearchList}
+					{...props}
 				/>
 			</div>
 		</div>

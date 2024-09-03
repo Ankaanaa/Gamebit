@@ -3,8 +3,10 @@ import { useEffect, useReducer, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import { Blog } from './components/Blog/Blog'
+import { LoginModal } from './components/LoginModal/LoginModal'
 import NavContainer from './components/Nav/NavContainer'
 import PosttwoK from './components/PostBlockTwo/Posttwo'
+import { PostCreation } from './components/PostCreation/PostCreation'
 import SearchPage from './components/SearchPage/SearchPage'
 import { useData } from './hook/useData'
 
@@ -24,11 +26,12 @@ function App(props: any) {
 	const [BlogContent, setBlogContent] = useState<BlogContent>()
 	const { data } = useData()
 	const [CheachSearchList, setCheckSearchList] = useState<boolean>(false)
+	const [isOpenModal, setIsOpenModal] = useState(false)
 
 	useEffect(() => {
 		axios
 			.get(
-				'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=836af64713b54e1188b0513dccf80e8a'
+				'https://newsapi.org/v2/everything?sources=techcrunch&apiKey=836af64713b54e1188b0513dccf80e8a&page=2'
 			)
 			.then(response => {
 				setBlogContent(response.data)
@@ -92,18 +95,56 @@ function App(props: any) {
 
 	const [state, dispatch] = useReducer(SearchReducer, initialState)
 	const PostBlock = data._state.PageContent.AllPost
-
 	const BlogPage = PostBlock.map((el: any) => {
 		return (
 			<Route
 				path={`/blog/${el.id}/${el.name}`}
-				element={<Blog name={el.name} text={el.text} />}
+				element={
+					<Blog
+						Blogs={data._state.PageContent.AllPost}
+						Name={el.name}
+						name={el.name}
+						text={el.text}
+						img={el.img}
+						id={el.id}
+					/>
+				}
+			/>
+		)
+	})
+	const BlogPageAPI = BlogContent?.articles.map((el: any) => {
+		return (
+			<Route
+				path={`/blogs/${el.title}`}
+				element={
+					<Blog
+						name={el.author}
+						text={el.title}
+						img={el.urlToImage}
+						content={el.content}
+						key={el.id}
+					/>
+				}
 			/>
 		)
 	})
 	return (
-		<div className='app-wrapper'>
-			<NavContainer dispatch={dispatch} setSize={setSize} isSize={isSize} />
+		<div
+			className={`app-wrapper ${
+				isOpenModal
+					? (document.body.style.overflow = 'hidden')
+					: (document.body.style.overflow = 'auto')
+			}`}
+		>
+			<NavContainer
+				dispatch={dispatch}
+				setSize={setSize}
+				isSize={isSize}
+				setIsOpenModal={setIsOpenModal}
+			/>
+			{isOpenModal && (
+				<LoginModal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} />
+			)}
 			<main className='page-content'>
 				<div className={`blog__body ${isSize ? 'blog__resize' : ''}`}>
 					<Routes>
@@ -140,6 +181,8 @@ function App(props: any) {
 							}
 						/>
 						{BlogPage}
+						{BlogPageAPI}
+						<Route path='/create-post' element={<PostCreation />} />
 					</Routes>
 				</div>
 			</main>

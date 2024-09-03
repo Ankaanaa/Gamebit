@@ -5,6 +5,7 @@ type props = {
 	setSize: React.Dispatch<React.SetStateAction<boolean>>
 	isSize: boolean
 	dispatch: React.Dispatch<string>
+	setIsOpenModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const NavContainer = (props: props) => {
@@ -23,6 +24,7 @@ const NavContainer = (props: props) => {
 			isCollapse={isCollapse}
 			dispatch={props.dispatch}
 			toggleVisibility={toggleVisibility}
+			setIsOpenModal={props.setIsOpenModal}
 		/>
 	)
 }

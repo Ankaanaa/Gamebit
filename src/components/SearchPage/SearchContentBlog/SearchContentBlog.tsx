@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useData } from '../../../hook/useData'
 import SearchBlog from './SearchBlog/SearchBlog'
 import './SearchContentBlog.scss'
@@ -20,29 +21,24 @@ interface props {
 }
 const SearchContentBlog = (props: props) => {
 	const { consumerValue, setConsumerValue } = useData()
+	const [moreDetailsBlog, setMoreDetailsBlog] = useState(7)
 
 	const animActiveBtn = (btn: any) => {
 		props.setActiveBtn(btn.currentTarget.id)
 		if (props.activeRequestBtn) {
 			props.setActiveRequestBtn(null)
 		}
+		if (consumerValue.length > 0) {
+			setConsumerValue('')
+		}
 		switch (btn.currentTarget.id) {
 			case '1': {
-				if (consumerValue.length > 0) {
-					setConsumerValue('')
-				}
 				return props.dispatch('')
 			}
 			case '2': {
-				if (consumerValue.length > 0) {
-					setConsumerValue('')
-				}
 				return props.dispatch('news')
 			}
 			case '3': {
-				if (consumerValue.length > 0) {
-					setConsumerValue('')
-				}
 				return props.dispatch('game')
 			}
 			default: {
@@ -91,9 +87,26 @@ const SearchContentBlog = (props: props) => {
 				</button>
 			</div>
 			<SearchBlog
+				moreDetailsBlog={moreDetailsBlog}
 				CheachSearchList={props.CheachSearchList}
 				SearchState={props.SearchState}
 			/>
+			<ButtonMoreDetails setMoreDetailsBlog={setMoreDetailsBlog} />
+		</div>
+	)
+}
+export const ButtonMoreDetails = (props: any) => {
+	return (
+		<div>
+			<button
+				onClick={() => {
+					props.setMoreDetailsBlog((prev: number) => prev + 3)
+				}}
+				className='Btn__moreDetails'
+			>
+				{' '}
+				More Details
+			</button>
 		</div>
 	)
 }

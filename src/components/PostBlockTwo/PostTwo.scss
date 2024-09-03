@@ -34,3 +34,9 @@
     background-size: cover;
     z-index: 0;
   }
+
+  .loading {
+    z-index: 30;
+    font-size: 30px;
+    color: red;
+  }

@@ -2,7 +2,7 @@ import { memo } from 'react'
 import './ScrollBlog.scss'
 
 interface BlogContent {
-	articles: {
+	Content: {
 		author: string
 		title: string
 		description: string
@@ -16,10 +16,10 @@ interface BlogContent {
 interface NewsColumnProps {
 	Content: BlogContent | undefined
 }
-const ScrollBlogK = (props: NewsColumnProps) => {
+const ScrollBlogK = (props: BlogContent) => {
 	return (
 		<section className='ScrollBlog'>
-			<h2>Recent Game Reviews</h2>
+			{props.Content && <h2>Recent Game Reviews</h2>}
 			<BlogNameBlock Content={props.Content} />
 		</section>
 	)
@@ -27,23 +27,10 @@ const ScrollBlogK = (props: NewsColumnProps) => {
 const ScrollBlog = memo(ScrollBlogK)
 export default ScrollBlog
 
-export const BlogNameBlock = (props: NewsColumnProps) => {
-	const BlogAPIContent = props.Content?.articles
-		.filter(
-			(el, index: number) =>
-				index === 7 ||
-				index === 8 ||
-				index === 9 ||
-				index === 4 ||
-				index === 3 ||
-				index === 2 ||
-				index === 1 ||
-				index === 6 ||
-				index === 5
-		)
-		.map(el => (
-			<ContentBlogScroll title={el.title} key={el.url} img={el.urlToImage} />
-		))
+export const BlogNameBlock = (props: BlogContent) => {
+	const BlogAPIContent = props.Content.map((el: any) => (
+		<ContentBlogScroll title={el.title} key={el.url} img={el.urlToImage} />
+	))
 
 	return (
 		<article className='ScrollBlog__blog'>

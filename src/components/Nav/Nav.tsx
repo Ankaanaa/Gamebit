@@ -9,6 +9,7 @@ type props = {
 	isVisible: boolean
 	toggleVisibility: () => void
 	dispatch: React.Dispatch<string>
+	setIsOpenModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const Nav = (props: props) => {
@@ -42,7 +43,12 @@ const Nav = (props: props) => {
 				<span className='sidebar__svg-text'>Adventure</span>{' '}
 				<span className='sidebar__svg-text-2'>Go?</span>
 			</button>
-			{props.isVisible && <Links dispatch={props.dispatch} />}
+			{props.isVisible && (
+				<Links
+					setIsOpenModal={props.setIsOpenModal}
+					dispatch={props.dispatch}
+				/>
+			)}
 			{!props.isVisible && (
 				<LinkSvg toggleVisibility={props.toggleVisibility} />
 			)}
